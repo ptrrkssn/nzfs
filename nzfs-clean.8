@@ -1,0 +1,104 @@
+.\"
+.\" CDDL HEADER START
+.\"
+.\" The contents of this file are subject to the terms of the
+.\" Common Development and Distribution License (the "License").
+.\" You may not use this file except in compliance with the License.
+.\"
+.\" You can obtain a copy of the license at usr/src/OPENSOLARIS.LICENSE
+.\" or http://www.opensolaris.org/os/licensing.
+.\" See the License for the specific language governing permissions
+.\" and limitations under the License.
+.\"
+.\" When distributing Covered Code, include this CDDL HEADER in each
+.\" file and include the License file at usr/src/OPENSOLARIS.LICENSE.
+.\" If applicable, add the following below this CDDL HEADER, with the
+.\" fields enclosed by brackets "[]" replaced with your own identifying
+.\" information: Portions Copyright [yyyy] [name of copyright owner]
+.\"
+.\" CDDL HEADER END
+.\"
+.\" Copyright (c) 2026 Peter Eriksson <pen@lysator.liu.se>
+.\"
+.Dd Mar 25, 2026
+.Dt NZFS-CLEAN 8
+.Os
+.
+.Sh NAME
+.Nm nzfs-clean
+.Nd clean snapshot(s) of ZFS dataset
+.Sh SYNOPSIS
+.Nm nzfs
+.Cm clean
+.Op Fl yvndfprea
+.Oo Fl V Ar level Ns Oc
+.Oo Fl A Ar age Ns Oc
+.Oo Fl E Ar property Ns Oc
+.Oo Fl T Ar time Ns Oc
+.Oo Fl P Ar workers Ns Oc
+.Oo Fl L Ar snaphots Ns Oc
+.Oo Fl M Ar regexp Ns Oc
+.Ar filesystem Ns
+.
+.Sh DESCRIPTION
+Destroy snapshots on the given dataset. Atleast one of
+.Op Fl aAEM 
+must be specified for any snapshot to be selected for deletion.
+
+.Bl -tag -width "-y"
+.It Fl y
+Answer yes to all questions.
+
+.It Fl v
+Be more verbose.
+
+.It Fl n
+No-update (dry-run) mode
+
+.It Fl d
+Enable debugging output.
+
+.It Fl f
+Force action.
+
+.It Fl p
+Print snapshots selected.
+
+.It Fl r
+Recurse into sub-datasets.
+
+.It Fl e
+Enable Expire property functionality.
+
+.It Fl a
+Select all snapshots.
+
+.It Fl V
+Set verbosity level.
+
+.It Fl A
+Select all snapshots older than specified age
+
+.It Fl E
+Specify Expire property name to use instead of "se.liu.it:expires".
+
+.It Fl T
+Set maximum excution time.
+
+.It Fl P
+Set the parallellism to use.
+
+.It Fl L
+Limit the number of snaps to select per batch run.
+
+.It Fl M
+Select snapshots matching the specified Regexp.
+
+.El
+.Pp
+Bla bla bla
+.El
+.
+.Sh SEE ALSO
+.Xr nzfs-destroy 8
+.Xr nzfs-snap 8
