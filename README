@@ -1,0 +1,33 @@
+# nzfs
+
+Author: Peter Eriksson <pen@lysator.liu.se>
+Date:   2026-03-25
+
+
+This is a patch for the OpenZFS 'zfs' command that adds a number of features:
+
+General changes:
+
+Being more verbose when doing stuff, displaying a progress indicator (either a spinning dial, or a counter).
+
+
+"zfs clean" - new command
+
+A variant of 'zfs destroy' that only works on snapshots, also adds support
+for utilizing the additional features that is added to 'zfs snap', like being able
+to select snapshots to delete based on age, or looking at a special "expires" propert,
+or selecting snapshots using regexps. Also adds support for doing cleanups in parallell, or
+limiting the number of snapshots deleted (batching)
+
+
+"zfs snap" - more features
+
+Being more verbose (if selected), being able to skip taking snapshots if no changes, or skipping
+snapshots if there is too little space available, and being able to set an "expire" property on the
+created snapshots.
+
+
+"zfs upgrade -n" - added feature
+
+Using "-n" the zfs upgrade command only prints the current ZFS filesystem version, and does not
+loop over all filesystems checking for upgradable ones.
