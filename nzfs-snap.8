@@ -31,7 +31,7 @@
 .Nm nzfs
 .Cm snap
 .Op Fl nvz
-.Oo Fl M Ar level Ns Oc
+.Oo Fl M Ar minfree Ns Oc
 .Oo Fl E Ar property Ns Oc
 .Oo Fl A Ar age Ns Oc
 .Oo Fl T Ar time Ns Oc
@@ -58,7 +58,7 @@ Skip taking snapshots if space available is less than <minfree>
 Set the name of the Expire property to use instead of "se.liu.it:expires".
 
 .It Fl A
-Specify the maximum age (stored in the Expire property) this snapshot should be kept.
+Specify the maximum age (stored in the Expire property) this snapshot should be kept. Also see nzfs-clean.8.
 
 .It Fl T
 Set maximum excution time.
