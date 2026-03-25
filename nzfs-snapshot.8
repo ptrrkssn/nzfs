@@ -21,25 +21,27 @@
 .\" Copyright (c) 2026 Peter Eriksson <pen@lysator.liu.se>
 .\"
 .Dd Mar 25, 2026
-.Dt NZFS-SNAP 8
+.Dt NZFS-SNAPSHOT 8
 .Os
 .
 .Sh NAME
-.Nm nzfs-snap
+.Nm nzfs-snapshot
 .Nd create snapshot(s) of ZFS dataset
 .Sh SYNOPSIS
 .Nm nzfs
-.Cm snap
+.Cm snapshot|snap
 .Op Fl nvz
+.Op Fl r
 .Oo Fl M Ar minfree Ns Oc
 .Oo Fl E Ar property Ns Oc
 .Oo Fl A Ar age Ns Oc
 .Oo Fl T Ar time Ns Oc
-.Ar filesystem Ns
+.Oo Fl o Ar property Ns = Ns Ar value Oc Ns …
+.Ar dataset Ns @ Ns Ar snapname Ns …
 .
 .Sh DESCRIPTION
 Creates snapshots on the given dataset. This man page only describes the additional
-features not available with the normal
+features and command line options not available with the normal
 .Nm zfs snap
 command.
 
