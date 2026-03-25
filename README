@@ -15,7 +15,7 @@ Being more verbose when doing stuff, displaying a progress indicator (either a s
 
 A variant of 'zfs destroy' that only works on snapshots, also adds support
 for utilizing the additional features that is added to 'zfs snap', like being able
-to select snapshots to delete based on age, or looking at a special "expires" propert,
+to select snapshots to delete based on age, or looking at a special "expires" property,
 or selecting snapshots using regexps. Also adds support for doing cleanups in parallell, or
 limiting the number of snapshots deleted (batching)
 
@@ -31,3 +31,23 @@ created snapshots.
 
 Using "-n" the zfs upgrade command only prints the current ZFS filesystem version, and does not
 loop over all filesystems checking for upgradable ones.
+
+
+EXAMPLES:
+
+
+# Create snapshots and set the Expire property to 24h
+NOW=`date +'%Y-%m-%d.%H:%M:%S'
+nzfs snap -A 24h -r "DATA/home@auto-$NOW"
+
+# Create snapshots called "non-empty", but skip snapshots with no changes
+nzfs snap -z -r "DATA/home@non-empty""
+
+# Delete all expired snapshots
+nzfs clean -r -e -r "DATA/home"
+
+# Delete all snapshots from 2025-01 or 2025-02
+nzfs clean -r -M 'auto-2025-(01|02)' "DATA/home"
+
+# Delete all snapshots older than 1W
+nzfs clean -r -A 1W "DATA/home"
