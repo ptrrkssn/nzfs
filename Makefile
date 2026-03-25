@@ -27,7 +27,7 @@ install-bin: build
 	cp nzfs $(BINDIR)
 
 install-man:
-	cp nzfs-clean.8 $(MANDIR)/man8
+	cp nzfs-clean.8 nzfs-snap.8 $(MANDIR)/man8
 
 distclean clean:
 	@rm -f nzfs

@@ -1,0 +1,74 @@
+.\"
+.\" CDDL HEADER START
+.\"
+.\" The contents of this file are subject to the terms of the
+.\" Common Development and Distribution License (the "License").
+.\" You may not use this file except in compliance with the License.
+.\"
+.\" You can obtain a copy of the license at usr/src/OPENSOLARIS.LICENSE
+.\" or http://www.opensolaris.org/os/licensing.
+.\" See the License for the specific language governing permissions
+.\" and limitations under the License.
+.\"
+.\" When distributing Covered Code, include this CDDL HEADER in each
+.\" file and include the License file at usr/src/OPENSOLARIS.LICENSE.
+.\" If applicable, add the following below this CDDL HEADER, with the
+.\" fields enclosed by brackets "[]" replaced with your own identifying
+.\" information: Portions Copyright [yyyy] [name of copyright owner]
+.\"
+.\" CDDL HEADER END
+.\"
+.\" Copyright (c) 2026 Peter Eriksson <pen@lysator.liu.se>
+.\"
+.Dd Mar 25, 2026
+.Dt NZFS-SNAP 8
+.Os
+.
+.Sh NAME
+.Nm nzfs-snap
+.Nd create snapshot(s) of ZFS dataset
+.Sh SYNOPSIS
+.Nm nzfs
+.Cm snap
+.Op Fl nvz
+.Oo Fl M Ar level Ns Oc
+.Oo Fl E Ar property Ns Oc
+.Oo Fl A Ar age Ns Oc
+.Oo Fl T Ar time Ns Oc
+.Ar filesystem Ns
+.
+.Sh DESCRIPTION
+Creates snapshots on the given dataset. This man page only describes the additional
+features not available on the normal zfs-clean.8 command.
+
+.Bl -tag -width "-n"
+.It Fl n
+No-update (dry-run) mode.
+
+.It Fl v
+Be more verbose.
+
+.It Fl z
+Skip creating snapshot if no changes since last snapshot (written=0).
+
+.It Fl M
+Skip taking snapshots if space available is less than <minfree>
+
+.It Fl E
+Set the name of the Expire property to use instead of "se.liu.it:expires".
+
+.It Fl A
+Specify the maximum age (stored in the Expire property) this snapshot should be kept.
+
+.It Fl T
+Set maximum excution time.
+
+.El
+.Pp
+Bla bla bla
+.El
+.
+.Sh SEE ALSO
+.Xr nzfs-clean 8
+,
+.Xr zfs-snap 8
